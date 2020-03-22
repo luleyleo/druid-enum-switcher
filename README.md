@@ -25,6 +25,7 @@ Lenses for enums `SomeEnum::any` map for example `SomeEnum::Any(u32)` to `Option
 
 This allows displaying any enum as
 ```rust
+#[derive(Data, Lens)]
 enum Test { A(u16), b(u32), c(u16) }
 
 Stack::new()
@@ -42,6 +43,7 @@ This would basically generate a widget to 'match' over an enums variants and ass
 
 This allows displaying any enum as
 ```rust
+#[derive[Data, Matchable]]
 enum Test { A(u16), b(u32), c(u16) }
 
 TestMatcher::new()
