@@ -17,6 +17,15 @@ Requirements:
 - `Optional` widget
 - Deriving `Lens` for enum
 
+Pro:
+- `Stack` and `Optional` are useful anyways
+- Nothing special about it
+
+Con:
+- Can only be used with enums meant for druid
+- No way to check for missing / doublicated matches
+- The names `Stack` and `Optional` do not convey the intend to match on an enum
+
 The `Stack` widget displays its children on top of each other
 
 The `Optional` widget basically maps `Widget<Option<T>>` to `Widget<T>`
@@ -39,6 +48,14 @@ Stack::new()
 Requirements:
 - A proc macro that can generate all that boiler plate code in [matching.rs]
 
+Pro:
+- Can check whether the match is exhaustive
+- Could provide a default widget
+
+Con:
+- Can only be used with enums meant for druid
+- Generates lots of code
+
 This would basically generate a widget to 'match' over an enums variants and assign some representation widget to each of them.
 
 This allows displaying any enum as
@@ -57,11 +74,20 @@ TestMatcher::new()
 Requirements:
 - `Immediate` widget
 
+Pro:
+- Super powerful
+- Can display *any* enum
+- Utilises standard Rust `match` expression
+
+Con:
+- It might be to powerful for a mere mortal to wield
+- Has to reconstruct its content whenever the data changes
+
 This blasphemous widget allows writing immediate-mode style code in druid. Thats it.
 
 This allows displaying any enum as
 ```rust
-#[derive[Data, Matchable]]
+// NO DERIVES REQUIRED!
 enum Test { A(u16), B(u32), C(u16) }
 
 Immediate::new(|data: &A| {
