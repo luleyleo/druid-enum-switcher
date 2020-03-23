@@ -63,16 +63,12 @@ fn build_ui() -> impl Widget<TestState> {
         format!("The second was chosen! {}", data)
     }));
 
-
-    let first_label = || Label::dynamic(|data: &f64, _env| {
-        format!("Your Choice: First with {}", data)
-    });
-    let second_label = || Label::dynamic(|data: &f64, _env| {
-        format!("Your Choice: Second with {}", data)
-    });
-    let third_label = || Label::dynamic(|data: &u64, _env| {
-        format!("Your Choice: Third with {}", data)
-    });
+    let first_label =
+        || Label::dynamic(|data: &f64, _env| format!("Your Choice: First with {}", data));
+    let second_label =
+        || Label::dynamic(|data: &f64, _env| format!("Your Choice: Second with {}", data));
+    let third_label =
+        || Label::dynamic(|data: &u64, _env| format!("Your Choice: Third with {}", data));
 
     let stack = Stack::new()
         .with_child(Optional::new(first_label()).lens(TestEnum::first))
@@ -84,12 +80,10 @@ fn build_ui() -> impl Widget<TestState> {
         .match_second(second_label())
         .match_third(third_label());
 
-    let immediate = Immediate::new( |data: &TestEnum | {
-        match data {
-            TestEnum::First(value) => Label::new(format!("Your Choice: First with {}", value)),
-            TestEnum::Second(value) => Label::new(format!("Your Choice: Second with {}", value)),
-            TestEnum::Third(value) => Label::new(format!("Your Choice: Third with {}", value)),
-        }
+    let immediate = Immediate::new(|data: &TestEnum| match data {
+        TestEnum::First(value) => Label::new(format!("Your Choice: First with {}", value)),
+        TestEnum::Second(value) => Label::new(format!("Your Choice: Second with {}", value)),
+        TestEnum::Third(value) => Label::new(format!("Your Choice: Third with {}", value)),
     });
 
     Flex::column()

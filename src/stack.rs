@@ -1,6 +1,6 @@
 use druid::{
     widget::{prelude::*, WidgetExt},
-    Data, WidgetPod, Rect, Point,
+    Data, Point, Rect, WidgetPod,
 };
 
 pub struct Stack<D> {

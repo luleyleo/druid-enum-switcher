@@ -224,7 +224,7 @@ checksum = "212d0f5754cb6769937f4501cc0e67f4f4483c8d2c3e1e922ee9edbe4ab4c7c0"
 [[package]]
 name = "druid"
 version = "0.5.0"
-source = "git+https://github.com/xi-editor/druid.git#cd347e6bfc0f8ea296466dbd0814c0247808fa06"
+source = "git+https://github.com/xi-editor/druid.git#69f8f05492262ee088d1495f7d0cc370c33f69a8"
 dependencies = [
  "druid-derive",
  "druid-shell",
@@ -242,7 +242,7 @@ dependencies = [
 [[package]]
 name = "druid-derive"
 version = "0.2.0"
-source = "git+https://github.com/xi-editor/druid.git#cd347e6bfc0f8ea296466dbd0814c0247808fa06"
+source = "git+https://github.com/xi-editor/druid.git#69f8f05492262ee088d1495f7d0cc370c33f69a8"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -259,7 +259,7 @@ dependencies = [
 [[package]]
 name = "druid-shell"
 version = "0.5.0"
-source = "git+https://github.com/xi-editor/druid.git#cd347e6bfc0f8ea296466dbd0814c0247808fa06"
+source = "git+https://github.com/xi-editor/druid.git#69f8f05492262ee088d1495f7d0cc370c33f69a8"
 dependencies = [
  "cairo-rs",
  "cfg-if",
@@ -885,14 +885,9 @@ checksum = "05da548ad6865900e60eaba7f589cc0783590a92e940c26953ff81ddbab2d677"
 
 [[package]]
 name = "proc-macro-hack"
-version = "0.5.12"
+version = "0.5.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f918f2b601f93baa836c1c2945faef682ba5b6d4828ecb45eeb7cc3c71b811b4"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
-]
+checksum = "fcfdefadc3d57ca21cf17990a28ef4c0f7c61383a28cb7604cf4a18e6ede1420"
 
 [[package]]
 name = "proc-macro-nested"

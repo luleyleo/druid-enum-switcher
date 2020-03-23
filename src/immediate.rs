@@ -1,4 +1,4 @@
-use druid::{Data, widget::prelude::*};
+use druid::{widget::prelude::*, Data};
 
 pub struct Immediate<D, W: Widget<()>> {
     constructor: Box<dyn Fn(&D) -> W>,

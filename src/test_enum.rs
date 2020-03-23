@@ -55,7 +55,7 @@ mod lenses {
                         *data = TestEnum::First(val);
                     }
                     res
-                },
+                }
             }
         }
     }
@@ -89,7 +89,7 @@ mod lenses {
                         *data = TestEnum::Second(val);
                     }
                     res
-                },
+                }
             }
         }
     }
@@ -123,10 +123,8 @@ mod lenses {
                         *data = TestEnum::Third(val);
                     }
                     res
-                },
+                }
             }
         }
     }
-
-
 }

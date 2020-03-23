@@ -41,31 +41,43 @@ impl TestEnumMatcher {
 impl Widget<TestEnum> for TestEnumMatcher {
     fn event(&mut self, ctx: &mut EventCtx, event: &Event, data: &mut TestEnum, env: &Env) {
         match data {
-            TestEnum::First(value) => if let Some(content) = &mut self.content_first {
-                content.event(ctx, event, value, env);
+            TestEnum::First(value) => {
+                if let Some(content) = &mut self.content_first {
+                    content.event(ctx, event, value, env);
+                }
             }
-            TestEnum::Second(value) => if let Some(content) = &mut self.content_second {
-                content.event(ctx, event, value, env);
+            TestEnum::Second(value) => {
+                if let Some(content) = &mut self.content_second {
+                    content.event(ctx, event, value, env);
+                }
             }
-            TestEnum::Third(value) => if let Some(content) = &mut self.content_third {
-                content.event(ctx, event, value, env);
+            TestEnum::Third(value) => {
+                if let Some(content) = &mut self.content_third {
+                    content.event(ctx, event, value, env);
+                }
             }
         }
     }
 
     fn lifecycle(&mut self, ctx: &mut LifeCycleCtx, event: &LifeCycle, data: &TestEnum, env: &Env) {
         match data {
-            TestEnum::First(value) => if let Some(content) = &mut self.content_first {
-                content.lifecycle(ctx, event, value, env);
-                self.first_added = true;
+            TestEnum::First(value) => {
+                if let Some(content) = &mut self.content_first {
+                    content.lifecycle(ctx, event, value, env);
+                    self.first_added = true;
+                }
             }
-            TestEnum::Second(value) => if let Some(content) = &mut self.content_second {
-                content.lifecycle(ctx, event, value, env);
-                self.second_added = true;
+            TestEnum::Second(value) => {
+                if let Some(content) = &mut self.content_second {
+                    content.lifecycle(ctx, event, value, env);
+                    self.second_added = true;
+                }
             }
-            TestEnum::Third(value) => if let Some(content) = &mut self.content_third {
-                content.lifecycle(ctx, event, value, env);
-                self.third_added = true;
+            TestEnum::Third(value) => {
+                if let Some(content) = &mut self.content_third {
+                    content.lifecycle(ctx, event, value, env);
+                    self.third_added = true;
+                }
             }
         }
     }
@@ -75,15 +87,21 @@ impl Widget<TestEnum> for TestEnumMatcher {
             TestEnum::First(_) if !self.first_added => ctx.children_changed(),
             TestEnum::Second(_) if !self.second_added => ctx.children_changed(),
             TestEnum::Third(_) if !self.third_added => ctx.children_changed(),
-            
-            TestEnum::First(value) => if let Some(content) = &mut self.content_first {
-                content.update(ctx, value, env);
+
+            TestEnum::First(value) => {
+                if let Some(content) = &mut self.content_first {
+                    content.update(ctx, value, env);
+                }
             }
-            TestEnum::Second(value) => if let Some(content) = &mut self.content_second {
-                content.update(ctx, value, env);
+            TestEnum::Second(value) => {
+                if let Some(content) = &mut self.content_second {
+                    content.update(ctx, value, env);
+                }
             }
-            TestEnum::Third(value) => if let Some(content) = &mut self.content_third {
-                content.update(ctx, value, env);
+            TestEnum::Third(value) => {
+                if let Some(content) = &mut self.content_third {
+                    content.update(ctx, value, env);
+                }
             }
         }
     }
@@ -96,28 +114,46 @@ impl Widget<TestEnum> for TestEnumMatcher {
         env: &Env,
     ) -> Size {
         match data {
-            TestEnum::First(value) => if let Some(content) = &mut self.content_first {
-                content.layout(ctx, bc, value, env)
-            } else { Size::ZERO }
-            TestEnum::Second(value) => if let Some(content) = &mut self.content_second {
-                content.layout(ctx, bc, value, env)
-            } else { Size::ZERO }
-            TestEnum::Third(value) => if let Some(content) = &mut self.content_third {
-                content.layout(ctx, bc, value, env)
-            } else { Size::ZERO }
+            TestEnum::First(value) => {
+                if let Some(content) = &mut self.content_first {
+                    content.layout(ctx, bc, value, env)
+                } else {
+                    Size::ZERO
+                }
+            }
+            TestEnum::Second(value) => {
+                if let Some(content) = &mut self.content_second {
+                    content.layout(ctx, bc, value, env)
+                } else {
+                    Size::ZERO
+                }
+            }
+            TestEnum::Third(value) => {
+                if let Some(content) = &mut self.content_third {
+                    content.layout(ctx, bc, value, env)
+                } else {
+                    Size::ZERO
+                }
+            }
         }
     }
 
     fn paint(&mut self, ctx: &mut PaintCtx, data: &TestEnum, env: &Env) {
         match data {
-            TestEnum::First(value) => if let Some(content) = &mut self.content_first {
-                content.paint(ctx, value, env);
+            TestEnum::First(value) => {
+                if let Some(content) = &mut self.content_first {
+                    content.paint(ctx, value, env);
+                }
             }
-            TestEnum::Second(value) => if let Some(content) = &mut self.content_second {
-                content.paint(ctx, value, env);
+            TestEnum::Second(value) => {
+                if let Some(content) = &mut self.content_second {
+                    content.paint(ctx, value, env);
+                }
             }
-            TestEnum::Third(value) => if let Some(content) = &mut self.content_third {
-                content.paint(ctx, value, env);
+            TestEnum::Third(value) => {
+                if let Some(content) = &mut self.content_third {
+                    content.paint(ctx, value, env);
+                }
             }
         }
     }
