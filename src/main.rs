@@ -12,6 +12,9 @@ use stack::Stack;
 mod matching;
 use matching::TestEnumMatcher;
 
+mod immediate;
+use immediate::Immediate;
+
 mod test_enum;
 use test_enum::TestEnum;
 
@@ -81,14 +84,29 @@ fn build_ui() -> impl Widget<TestState> {
         .match_second(second_label())
         .match_third(third_label());
 
+    let immediate = Immediate::new( |data: &TestEnum | {
+        match data {
+            TestEnum::First(value) => Label::new(format!("Your Choice: First with {}", value)),
+            TestEnum::Second(value) => Label::new(format!("Your Choice: Second with {}", value)),
+            TestEnum::Third(value) => Label::new(format!("Your Choice: Third with {}", value)),
+        }
+    });
+
     Flex::column()
         .with_child(button)
-        .with_spacer(10.0)
+        .with_spacer(20.0)
         .with_child(int_label)
         .with_child(optional_label.lens(TestState::some_option))
         .with_child(optional_second.lens(TestState::some_enum.then(TestEnum::second)))
+        .with_spacer(20.0)
+        .with_child(Label::new("Stack + Option:"))
         .with_child(stack.lens(TestState::some_enum))
+        .with_spacer(5.0)
+        .with_child(Label::new("Matching:"))
         .with_child(matching.lens(TestState::some_enum))
+        .with_spacer(5.0)
+        .with_child(Label::new("Immediate:"))
+        .with_child(immediate.lens(TestState::some_enum))
         .padding(10.0)
 }
 

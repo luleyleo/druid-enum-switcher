@@ -26,7 +26,7 @@ Lenses for enums `SomeEnum::any` map for example `SomeEnum::Any(u32)` to `Option
 This allows displaying any enum as
 ```rust
 #[derive(Data, Lens)]
-enum Test { A(u16), b(u32), c(u16) }
+enum Test { A(u16), B(u32), C(u16) }
 
 Stack::new()
     .with_child(Optional::new(WidgetForU16::new()).lens(Test::a))
@@ -44,12 +44,33 @@ This would basically generate a widget to 'match' over an enums variants and ass
 This allows displaying any enum as
 ```rust
 #[derive[Data, Matchable]]
-enum Test { A(u16), b(u32), c(u16) }
+enum Test { A(u16), B(u32), C(u16) }
 
 TestMatcher::new()
     .match_a(WidgetForU16::new())
     .match_b(WidgetForU32::new())
     .match_c(WidgetForOtherU16::new());
+```
+
+## The unholy `Immediate` widget
+
+Requirements:
+- `Immediate` widget
+
+This blasphemous widget allows writing immediate-mode style code in druid. Thats it.
+
+This allows displaying any enum as
+```rust
+#[derive[Data, Matchable]]
+enum Test { A(u16), B(u32), C(u16) }
+
+Immediate::new(|data: &A| {
+    match data {
+        Test::A(value) => Label::new(format!("A = {}", value)),
+        Test::B(value) => widget_for_b(value),
+        Test::C(value) => widget_for_c(value),
+    }
+});
 ```
 
 # Unimplemented ideas
